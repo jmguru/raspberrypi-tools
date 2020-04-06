@@ -42,9 +42,7 @@ if [ -z ${RDISK+x} ] || [ -z ${INFILE+x} ] || [ -z ${DISK+x} ]; then
    exit 1
 fi
 
-#diskutil unmountDisk $DISK
-#sudo dd bs=1m if=$INFILE of=$RDISK conv=sync
-#sudo diskutil eject $RDISK
-echo $DISK
-echo $INFILE
-echo $RDISK
+diskutil unmountDisk $DISK
+sudo dd bs=1m if=$INFILE of=$RDISK conv=sync
+sudo diskutil eject $RDISK
+
