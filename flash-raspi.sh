@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo -s
+
 usage () {
   echo 'Usage: flash-raspi.sh -d|--disk <PATH> -r|--rdisk <PATH> -i|--infile <PATH> -h|--help'
   echo 'Example:'
@@ -43,6 +45,6 @@ if [ -z ${RDISK+x} ] || [ -z ${INFILE+x} ] || [ -z ${DISK+x} ]; then
 fi
 
 diskutil unmountDisk $DISK
-sudo dd bs=1m if=$INFILE of=$RDISK conv=sync
-sudo diskutil eject $RDISK
+dd bs=1m if=$INFILE of=$RDISK conv=sync
+diskutil eject $RDISK
 
